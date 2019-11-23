@@ -11,16 +11,28 @@
 输出：7 -> 0 -> 8
 原因：342 + 465 = 807
 
-来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/add-two-numbers
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
 
+
 # Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
 
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        number1 = self.chain2number(l1)
+        number2 = self.chain2number(l2)
+        result_number = number1 + number2
+        result_chain = self.number2chain(result_number)
+        return result_chain
+
+    def chain2number(self, list_node):
+        return int(''.join(map(str, list_node[::-1])))
+
+    def number2chain(self, number):
+        return list(str(number))[::-1]
+
+# 不了解链表的数据结构，后面再解答此题
